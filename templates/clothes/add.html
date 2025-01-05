@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}仓库管理系统 - 添加服装{% endblock %}
+{% block title %}management system - Add clothing{% endblock %}
 {% block content %}
     <div class="container" style="height: auto">
         <div class="col-md-4 col-md-offset-4">
@@ -8,7 +8,7 @@
                     <div class="alert alert-warning">{{ msg }}</div>
                 {% endif %}
                 {% csrf_token %}
-                <h1 class="text-center">添加服装</h1><br>
+                <h1 class="text-center">Add clothing</h1><br>
                 <div class="form-group">
                     {{ clothes_form.name.label_tag }}
                     {{ clothes_form.name }}
@@ -44,8 +44,8 @@
                     {{ clothes_form.desc }}
                     {{ clothes_form.desc.errors }}
                 </div>
-                <button type="reset" class="btn btn-default pull-left" style="width: 30%;margin-left: 10%">重置</button>
-                <button type="submit" class="btn btn-primary pull-right" style="width: 30%;margin-right: 10%">添加</button>
+                <button type="reset" class="btn btn-default pull-left" style="width: 30%;margin-left: 10%">reset</button>
+                <button type="submit" class="btn btn-primary pull-right" style="width: 30%;margin-right: 10%">append</button>
             </form>
         </div>
     </div> <!-- /container -->

@@ -17,7 +17,7 @@ def list(request):
         if foo.stock < 10:
             short.append(foo.name)
     short_str = '、'.join(short)
-    messages.add_message(request, messages.WARNING, f'{str(short_str)}库存不足')
+    messages.add_message(request, messages.WARNING, f'{str(short_str)}Insufficient stock') #库存不足
     paginator = Paginator(qs, 5)
     page = request.GET.get('page', '1')
     result = paginator.page(page)
@@ -50,13 +50,13 @@ def add(request):
             context = {
                 'id': new_clothes.id,
             }
-            messages.add_message(request, messages.SUCCESS, '添加成功')
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
             return redirect('/clothes/')
         else:
             context = {
                 'clothes_form': clothes_form
             }
-            messages.add_message(request, messages.WARNING, '请检查填写的内容')
+            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
             return render(request, 'clothes/add.html', context)
     else:
         clothes_form = ClothesForm()
@@ -97,7 +97,7 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, '查询成功')
+    messages.add_message(request, messages.SUCCESS, 'Query success')#查询成功
     return render(request, 'clothes/index.html', context)
 
 
@@ -132,13 +132,13 @@ def update(request, clothes_id):
             context = {
                 'clothes_id': clothes_id
             }
-            messages.add_message(request, messages.SUCCESS, '修改成功')
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
             return redirect(reverse('clothes:index'))
         else:
             context = {
                 'clothes_form': clothes_form
             }
-            messages.add_message(request, messages.WARNING, '请检查填写的内容')
+            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
             return render(request, 'clothes/edit.html', context)
     else:
         clothes_form = ClothesForm({'id': clothes.id,
@@ -160,7 +160,7 @@ def update(request, clothes_id):
 def delete(request, clothes_id):
     clothes = Clothes.objects.get(id=clothes_id)
     clothes.delete()
-    messages.add_message(request, messages.SUCCESS, '删除成功')
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
     return redirect(reverse('clothes:index'))
 
 

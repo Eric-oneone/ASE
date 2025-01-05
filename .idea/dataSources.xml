@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="db" uuid="898ceba3-7e27-4ce8-983b-cf44c549b39e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\郭\Desktop\Mys(1)\Mys\StoreManageSystem\clothes_service\db.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="db [2]" uuid="3e0a2d5a-3ff5-4be0-ba84-97c53d04b163">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\郭\Desktop\Mys(1)\Mys\StoreManageSystem\outorder_service\db.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>

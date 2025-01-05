@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}仓库管理系统 - 出库单详情{% endblock %}
+{% block title %}Management System - Delivery slip details{% endblock %}
 {% block content %}
     <div align="center" style="height: 600px;margin-top: 5%">
-        <h1 style="text-align: center">出库单详情</h1><br>
+        <h1 style="text-align: center">Details of the delivery slip</h1><br>
         {% if qs1 %}
             <table class="table table-striped table-bordered table-hover  table-condensed" style="width: 800px">
                 <tr class="success" style="text-align: center;font-weight: bold">
                     <td>ID</td>
-                    <td>入库单号</td>
-                    <td>客户</td>
-                    <td>经手人</td>
-                    <td>合计</td>
-                    <td>创建时间</td>
-                    <td>修改时间</td>
-                    <td>编辑</td>
-                    <td>修改</td>
+                    <td>Warehouse entry number</td>
+                    <td>client</td>
+                    <td>agent</td>
+                    <td>total</td>
+                    <td>Creation time</td>
+                    <td>Modification time</td>
+                    <td>editor</td>
+                    <td>delete</td>
                 </tr>
                 {% for foo in qs1 %}
                     <tr style="text-align: center">
@@ -25,28 +25,28 @@
                         <td>{{ sum }}</td>
                         <td>{{ foo.create_time }}</td>
                         <td>{{ foo.modify_time }}</td>
-                        <td><a class="btn btn-primary btn-sm" href="{% url 'outorder:update' foo.id %}">编辑</a></td>
-                        <td><a class="btn btn-danger btn-sm" href="{% url 'outorder:delete' foo.id %}">删除</a></td>
+                        <td><a class="btn btn-primary btn-sm" href="{% url 'outorder:update' foo.id %}">editor</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'outorder:delete' foo.id %}">delete</a></td>
                     </tr>
                 {% endfor %}
             </table>
         {% else %}
-            <p>没有任何出库单</p>
+            <p>There is no warehouse clearance</p>
         {% endif %}
         {% if qs2 %}
-            <a class="btn btn-info btn-sm" href="{% url 'outorder:addmore' outorder_id %}">继续添加</a>
+            <a class="btn btn-info btn-sm" href="{% url 'outorder:addmore' outorder_id %}">add</a>
             <br>
             <br>
             <table class="table table-striped table-bordered table-hover  table-condensed" style="width: 800px">
                 <tr class="success" style="text-align: center;font-weight: bold">
                     <td>ID</td>
-                    <td>服装号</td>
-                    <td>服装名</td>
-                    <td>价格</td>
-                    <td>数量</td>
-                    <td>小计</td>
-                    <td>编辑</td>
-                    <td>删除</td>
+                    <td>Garment number</td>
+                    <td>Costume name</td>
+                    <td>Price</td>
+                    <td>quantity</td>
+                    <td>subtotal</td>
+                    <td>editor</td>
+                    <td>delete</td>
                 </tr>
                 {% for foo in qs2 %}
                     <tr style="text-align: center">
@@ -57,17 +57,17 @@
                         <td>{{ foo.amount }}</td>
                         <td>{% widthratio foo.clothes.price 1 foo.amount %}</td>
                         <td><a class="btn btn-primary btn-sm"
-                               href="{% url 'outorder:editmore' outorder_id=outorder_id outorderclothes_id=foo.id %}">编辑</a>
+                               href="{% url 'outorder:editmore' outorder_id=outorder_id outorderclothes_id=foo.id %}">editor</a>
                         </td>
                         <td><a class="btn btn-danger btn-sm"
-                               href="{% url 'outorder:deletemore' outorder_id=outorder_id outorderclothes_id=foo.id %}">删除</a>
+                               href="{% url 'outorder:deletemore' outorder_id=outorder_id outorderclothes_id=foo.id %}">delete</a>
                         </td>
                     </tr>
                 {% endfor %}
             </table>
         {% else %}
-            <p>没有任何服装信息</p>
-            <a class="btn btn-info btn-sm" href="{% url 'outorder:addmore' outorder_id %}">添加</a>
+            <p>No clothing information</p>
+            <a class="btn btn-info btn-sm" href="{% url 'outorder:addmore' outorder_id %}">add</a>
         {% endif %}
     </div>
     <div class="req1" msg="1" style="display:none"></div>

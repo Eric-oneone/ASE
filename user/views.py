@@ -36,13 +36,13 @@ def add(request):
             context = {
                 'id': new_user.id
             }
-            messages.add_message(request, messages.SUCCESS, '添加成功')
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
             return redirect(reverse('user:index'))
         else:
             context = {
                 'user_form': user_form
             }
-            messages.add_message(request, messages.WARNING, '请检查填写的内容')
+            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
             return render(request, 'user/add.html', {'user_form': user_form})
     else:
         user_form = UserForm()
@@ -74,7 +74,7 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, '查询成功')
+    messages.add_message(request, messages.SUCCESS, 'Query success') #查询成功
     return render(request, 'user/index.html', context)
 
 
@@ -106,13 +106,13 @@ def update(request, user_id):
             context = {
                 'user_id': user_id
             }
-            messages.add_message(request, messages.SUCCESS, '修改成功')
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
             return redirect(reverse('user:index'))
         else:
             context = {
                 'user_form': user_form
             }
-            messages.add_message(request, messages.WARNING, '请检查填写的内容')
+            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
             return render(request, 'user/edit.html', context)
     else:
         user_form = UserForm({'id': user.id,
@@ -132,7 +132,7 @@ def update(request, user_id):
 def delete(request, user_id):
     user = User.objects.get(id=user_id)
     user.delete()
-    messages.add_message(request, messages.SUCCESS, '删除成功')
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
     return redirect(reverse('user:index'))
 
 

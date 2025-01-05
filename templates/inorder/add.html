@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}仓库管理系统 - 添加入库单{% endblock %}
+{% block title %}Management System - Add an entry ticket{% endblock %}
 {% block content %}
     <div class="container" style="height: 600px;margin-top: 5%">
         <div class="col-md-4 col-md-offset-4">
@@ -8,14 +8,14 @@
                     <div class="alert alert-warning">{{ msg }}</div>
                 {% endif %}
                 {% csrf_token %}
-                <h1 class="text-center">添加入库单</h1><br>
+                <h1 class="text-center">Add the entry slip</h1><br>
                 <div class="form-group">
                     {{ inorder_form.customer.label_tag }}
                     {{ inorder_form.customer }}
                     {{ inorder_form.customer.errors }}
                 </div>
-                <button type="reset" class="btn btn-default pull-left" style="width: 30%;margin-left: 10%">重置</button>
-                <button type="submit" class="btn btn-primary pull-right" style="width: 30%;margin-right: 10%">添加</button>
+                <button type="reset" class="btn btn-default pull-left" style="width: 30%;margin-left: 10%">reset</button>
+                <button type="submit" class="btn btn-primary pull-right" style="width: 30%;margin-right: 10%">append</button>
             </form>
         </div>
     </div> <!-- /container -->

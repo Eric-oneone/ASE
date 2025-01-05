@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}仓库管理系统 - 货物管理{% endblock %}
+{% block title %}Management Systems - Cargo management{% endblock %}
 {% block content %}
     <div id="content" style="height: 600px;margin-top: 5%">
         <h1 class="text-center">goods management</h1><br>
@@ -44,7 +44,7 @@
                     <input type="text" class="form-control" id="color" name="color" placeholder="in color inquire"
                            style="width: 110px">
                 </div>
-                &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success">查询</button>
+                &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success">inquire</button>
             </form>
         </div>
         <br>
@@ -81,28 +81,28 @@
                         <td>{{ foo.desc }}</td>
                         <td>{{ foo.create_time }}</td>
                         <td>{{ foo.modify_time }}</td>
-                        <td><a class="btn btn-primary btn-sm" href="{% url 'clothes:update' foo.id %}">编辑</a></td>
-                        <td><a class="btn btn-danger btn-sm" href="{% url 'clothes:delete' foo.id %}">删除</a></td>
+                        <td><a class="btn btn-primary btn-sm" href="{% url 'clothes:update' foo.id %}">editor</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'clothes:delete' foo.id %}">delete</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
-                <p>没有任何服装</p>
+                <p>No costume</p>
             {% endif %}
             </table>
         </div>
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="/clothes?page=1" rel="external nofollow">首页</a></li>
+                <li><a href="/clothes?page=1" rel="external nofollow">Home</a></li>
                 {% if result.has_previous %}
-                    <li><a href="/clothes?page={{ result.previous_page_number }}" rel="external nofollow">上一页</a></li>
+                    <li><a href="/clothes?page={{ result.previous_page_number }}" rel="external nofollow">Previous</a></li>
                 {% endif %}
                 {% for num in result.paginator.page_range %}
                     <li><a href="/clothes?page={{ num }}" rel="external nofollow">{{ num }}</a></li>
                 {% endfor %}
                 {% if result.has_next %}
-                    <li><a href="/clothes?page={{ result.next_page_number }}" rel="external nofollow">下一页</a></li>
+                    <li><a href="/clothes?page={{ result.next_page_number }}" rel="external nofollow">Next</a></li>
                 {% endif %}
-                <li><a href="/clothes?page={{ result.paginator.num_pages }}" rel="external nofollow">尾页</a></li>
+                <li><a href="/clothes?page={{ result.paginator.num_pages }}" rel="external nofollow">Trailing</a></li>
             </ul>
         </div>
         <!-- 分页结束 -->

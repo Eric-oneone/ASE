@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}仓库管理系统 - 客户管理{% endblock %}
+{% block title %}Management System - Customer Management{% endblock %}
 {% block content %}
     <div id="content" style="height: 600px;margin-top: 5%">
         <h1 class="text-center">customer</h1><br>
@@ -25,7 +25,7 @@
                     <label for="address">address :</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="in address inquir">
                 </div>
-                &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success">查询</button>
+                &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success">inquire</button>
             </form>
         </div>
         <br>
@@ -34,13 +34,13 @@
                 <table class="table table-striped table-bordered table-hover  table-condensed" style="width: 1100px">
                 <tr class="success" style="text-align: center;font-weight: bold">
                     <td>ID</td>
-                    <td>客户名</td>
-                    <td>电话</td>
-                    <td>地址</td>
-                    <td>创建时间</td>
-                    <td>修改时间</td>
-                    <td>编辑</td>
-                    <td>删除</td>
+                    <td>Client</td>
+                    <td>telephone</td>
+                    <td>address</td>
+                    <td>Creation time</td>
+                    <td>Modification time</td>
+                    <td>editor</td>
+                    <td>delete</td>
                 </tr>
                 {% for foo in result %}
                     <tr style="text-align: center">
@@ -50,29 +50,29 @@
                         <td>{{ foo.address }}</td>
                         <td>{{ foo.create_time }}</td>
                         <td>{{ foo.modify_time }}</td>
-                        <td><a class="btn btn-primary btn-sm" href="{% url 'customer:update' foo.id %}">编辑</a></td>
-                        <td><a class="btn btn-danger btn-sm" href="{% url 'customer:delete' foo.id %}">删除</a></td>
+                        <td><a class="btn btn-primary btn-sm" href="{% url 'customer:update' foo.id %}">editor</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'customer:delete' foo.id %}">delete</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
-                <p>没有任何客户</p>
+                <p>Without customers</p>
             {% endif %}
             </table>
         </div>
         <!-- 分页开始 -->
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="/customer?page=1" rel="external nofollow">首页</a></li>
+                <li><a href="/customer?page=1" rel="external nofollow">Home</a></li>
                 {% if result.has_previous %}
-                    <li><a href="/customer?page={{ result.previous_page_number }}" rel="external nofollow">上一页</a></li>
+                    <li><a href="/customer?page={{ result.previous_page_number }}" rel="external nofollow">Previous</a></li>
                 {% endif %}
                 {% for num in result.paginator.page_range %}
                     <li><a href="/customer?page={{ num }}" rel="external nofollow">{{ num }}</a></li>
                 {% endfor %}
                 {% if result.has_next %}
-                    <li><a href="/customer?page={{ result.next_page_number }}" rel="external nofollow">下一页</a></li>
+                    <li><a href="/customer?page={{ result.next_pageHome_number }}" rel="external nofollow">Next</a></li>
                 {% endif %}
-                <li><a href="/customer?page={{ result.paginator.num_pages }}" rel="external nofollow">尾页</a></li>
+                <li><a href="/customer?page={{ result.paginator.num_pages }}" rel="external nofollow">Trailing</a></li>
             </ul>
         </div>
     <!-- 分页结束 -->

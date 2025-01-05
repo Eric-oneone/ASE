@@ -31,9 +31,9 @@ def login(request):
                     request.session['user_role'] = user.role
                     return redirect(reverse('index'))
                 else:
-                    messages.add_message(request, messages.WARNING, '密码不正确')
+                    messages.add_message(request, messages.WARNING, 'Incorrect password')#密码不正确
             except User.DoesNotExist:
-                messages.add_message(request, messages.WARNING, '用户不存在')
+                messages.add_message(request, messages.WARNING, 'User does not exist')#用户不存在
         return render(request, 'login.html', locals())
     login_form = LoginForm()
     return render(request, 'login.html', locals())
@@ -66,25 +66,25 @@ def changepwd(request):
                 if password1 == password2:
                     user.password = hash_code(password1)
                     user.save()
-                    messages.add_message(request, messages.SUCCESS, '修改成功')
+                    messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
                     return redirect(reverse('index'))
                 else:
                     context = {
                         'changepwd_form': changepwd_form
                     }
-                    messages.add_message(request, messages.WARNING, '两次输入的密码不一致')
+                    messages.add_message(request, messages.WARNING, 'The two passwords are different')#两次输入的密码不一致
                     return render(request, 'changepwd.html', context)
             else:
                 context = {
                     'changepwd_form': changepwd_form
                 }
-                messages.add_message(request, messages.WARNING, '原密码不正确')
+                messages.add_message(request, messages.WARNING, 'The old password is incorrect')#原密码不正确
                 return render(request, 'changepwd.html', context)
         else:
             context = {
                 'changepwd_form': changepwd_form
             }
-            messages.add_message(request, messages.WARNING, '请检查填写的内容')
+            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
             return render(request, 'changepwd.html', context)
     else:
         changepwd_form = ChangepwdForm()
@@ -98,8 +98,8 @@ def changepwd(request):
 def checkusername(request, username):
     same_name_user = User.objects.filter(username=username)
     if not same_name_user:
-        return JsonResponse({'ret': 0, 'msg': '用户名可使用'})
-    return JsonResponse({'ret': 1, 'msg': '用户名已存在'})
+        return JsonResponse({'ret': 0, 'msg': 'The user name is available'})#用户名可使用
+    return JsonResponse({'ret': 1, 'msg': 'The user name already exists'})#用户名已存在
 
 
 # 哈希加密

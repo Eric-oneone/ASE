@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}仓库管理系统 - 用户管理{% endblock %}
+{% block title %}Management System - User management{% endblock %}
 {% block content %}
     <div id="content">
         <div id="search" class="text-center" style="margin-top: 5%">
@@ -26,8 +26,8 @@
                     <label for="role">role:</label>
                     <select id="role" name="role" class="form-control" style="width: 200px">
                         <option style='display: none'></option>
-                        <option>管理员</option>
-                        <option>操作员</option>
+                        <option>Administrator</option>
+                        <option>operator</option>
                     </select>
                 </div>
                 &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success">inquire</button>
@@ -57,29 +57,29 @@
                         <td>{{ foo.role }}</td>
                         <td>{{ foo.create_time }}</td>
                         <td>{{ foo.modify_time }}</td>
-                        <td><a class="btn btn-primary btn-sm" href="{% url 'user:update' foo.id %}">编辑</a></td>
-                        <td><a class="btn btn-danger btn-sm" href="{% url 'user:delete' foo.id %}">删除</a></td>
+                        <td><a class="btn btn-primary btn-sm" href="{% url 'user:update' foo.id %}">editor</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'user:delete' foo.id %}">delete</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
-                <p>没有任何用户</p>
+                <p>No users</p>
             {% endif %}
             </table>
         </div>
         <!-- 分页开始 -->
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="/user?page=1" rel="external nofollow">首页</a></li>
+                <li><a href="/user?page=1" rel="external nofollow">Home</a></li>
                 {% if result.has_previous %}
-                    <li><a href="/user?page={{ result.previous_page_number }}" rel="external nofollow">上一页</a></li>
+                    <li><a href="/user?page={{ result.previous_page_number }}" rel="external nofollow">Previous</a></li>
                 {% endif %}
                 {% for num in result.paginator.page_range %}
                     <li><a href="/user?page={{ num }}" rel="external nofollow">{{ num }}</a></li>
                 {% endfor %}
                 {% if result.has_next %}
-                    <li><a href="/user?page={{ result.next_page_number }}" rel="external nofollow">下一页</a></li>
+                    <li><a href="/user?page={{ result.next_page_number }}" rel="external nofollow">Next</a></li>
                 {% endif %}
-                <li><a href="/user?page={{ result.paginator.num_pages }}" rel="external nofollow">尾页</a></li>
+                <li><a href="/user?page={{ result.paginator.num_pages }}" rel="external nofollow">Trailing </a></li>
             </ul>
         </div>
         <!-- 分页结束 -->

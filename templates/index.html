@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {#{% load staticfiles %}#}
 {% load static %}
-{% block title %}仓库管理系统 - 主页{% endblock %}
+{% block title %}Management System - Home page{% endblock %}
 {% block content %}
     <div class="container text-center" style="margin-top: 5%">
         {% if request.session.is_login %}
@@ -10,7 +10,7 @@
                 <div class="row center-block" style="width: 600px">
                     <div class="list-group col-xs-4 " style="width: 200px">
                         <a href="#" class="list-group-item active">system</a>
-                        {% if request.session.user_role == '管理员' %}
+                        {% if request.session.user_role == 'Administrator' %}
                             <a href="{% url 'user:index' %}" class="list-group-item">user</a>
                         {% endif %}
                         <a href="{% url 'customer:index' %}" class="list-group-item">clientele</a>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
         {% else %}
-            <h1 style="margin-top: 15%">你尚未登录，只能访问公开内容！</h1>
+            <h1 style="margin-top: 15%">You are not logged in and can only access public content!</h1>
         {% endif %}
     </div>
 {% endblock %}
