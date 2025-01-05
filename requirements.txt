@@ -1,0 +1,7 @@
+django==2.0
+django-threadlocals
+pymysql
+click
+requests
+django-simple-captcha
+captcha

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="{% static '/images/logo.png' %}">
+    <title>{% block title %}base{% endblock %}</title>
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/html5shiv.min.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav"
+                    aria-expanded="false">
+                <span class="sr-only">切换导航条</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="#">warehouse management system</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="my-nav">
+            <ul class="nav navbar-nav faq-tabbable">
+                <li class="active"><a href="{% url 'index' %}">home</a></li>
+                {% if request.session.user_role == '管理员' %}
+                    <li><a href="{% url 'user:index' %}">user management</a></li>
+                {% endif %}
+                <li><a href="{% url 'customer:index' %}">customer</a></li>
+                <li><a href="{% url 'clothes:index' %}">inventory</a></li>
+                <li><a href="{% url 'inorder:index' %}">Warehouse receipt</a></li>
+                <li><a href="{% url 'outorder:index' %}">Delivery order</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.session.is_login %}
+                    <li><a href="#">{{ request.session.user_role }}：{{ request.session.user_name }}</a></li>
+                    <li><a href="{% url 'changepwd' %}">change password</a></li>
+                    <li><a href="{% url 'logout' %}">log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">log in</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+{% if messages %}
+    <div id="messages" class="text-center">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>信息提示：</strong> {{ message }}.
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% block content %}{% endblock %}
+<footer class="panel-footer">
+    <p class="text-center">
+        <span>Copyright (C). create by BHML 2024, All Rights Reserved.</span>&nbsp;&nbsp;
+    </p>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+</body>
+<script src="{% static 'js/main.js' %}"></script>
+</html>
