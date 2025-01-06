@@ -4,14 +4,14 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 
-# 电话号码验证
+
 def phone_validate(value):
     phone_re = re.compile(r'^1[3456789]\d{9}$')
     if not phone_re.match(value):
-        raise ValidationError('Mobile phone format error')#手机格式错误
+        raise ValidationError('Mobile phone format error')
 
 
-# 客户表单
+
 class CustomerForm(forms.Form):
     id = forms.IntegerField(label='ID', required=False,
                             widget=forms.TextInput({'class': 'form-control', 'disabled': 'disabled'}))

@@ -9,9 +9,9 @@ from common.models import Inorder, User, InorderClothes, Customer
 from inorder.forms import InorderForm, InorderClothesForm, EditmoreForm
 
 
-# 入库单列表
+
 def list(request):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
+
     qs = Inorder.objects.all()
     paginator = Paginator(qs, 5)
     page = request.GET.get('page', '1')
@@ -22,7 +22,7 @@ def list(request):
     return render(request, 'inorder/index.html', context)
 
 
-# 添加入库单
+
 def add(request):
     if request.method == "POST":
         inorder_form = InorderForm(request.POST)
@@ -38,14 +38,14 @@ def add(request):
             context = {
                 'id': new_inorder.id
             }
-            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')
             return redirect(reverse('inorder:detail', args={new_inorder.id}))
 
         else:
             context = {
                 'inorder_form': inorder_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'inorder/add.html', context)
     else:
         inorder_form = InorderForm()
@@ -55,7 +55,7 @@ def add(request):
         return render(request, 'inorder/add.html', context)
 
 
-# 搜索入库单
+
 def search(request):
     object = Inorder.objects
     qs = object.values()
@@ -79,11 +79,11 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, 'Query success')#查询成功
+    messages.add_message(request, messages.SUCCESS, 'Query success')
     return render(request, 'inorder/index.html', context)
 
 
-# 修改入库单
+
 def update(request, inorder_id):
     inorder = Inorder.objects.get(id=inorder_id)
     qs = InorderClothes.objects.filter(inorder_id=inorder_id)
@@ -97,14 +97,14 @@ def update(request, inorder_id):
             context = {
                 'inorder_id': inorder_id
             }
-            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')
             return redirect(reverse('inorder:index'))
         else:
             context = {
                 'inorder_form': inorder_form,
                 'qs': qs
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'inorder/edit.html', context)
     else:
         inorder_form = InorderForm({'id': inorder.id,
@@ -120,21 +120,21 @@ def update(request, inorder_id):
         return render(request, 'inorder/edit.html', context)
 
 
-# 删除入库单
+
 def delete(request, inorder_id):
     qs = InorderClothes.objects.filter(inorder_id=inorder_id)
     if qs:
-        messages.add_message(request, messages.WARNING, 'Failed to delete, please delete the order first')#删除失败，请先删除该订单下的商品
+        messages.add_message(request, messages.WARNING, 'Failed to delete, please delete the order first')
         return redirect(reverse('inorder:detail', args={inorder_id}))
     inorder = Inorder.objects.get(id=inorder_id)
     inorder.delete()
-    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')
     return redirect(reverse('inorder:index'))
 
 
-# 入库单详情
+
 def detail(request, inorder_id):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
+
     qs1 = Inorder.objects.filter(id=inorder_id)
     qs2 = InorderClothes.objects.filter(inorder_id=inorder_id)
     sum = 0
@@ -149,25 +149,25 @@ def detail(request, inorder_id):
     return render(request, 'inorder/detail.html', context)
 
 
-# 添加入库单货物
+
 def addmore(request, inorder_id):
     if request.method == "POST":
         inorderclothes_form = InorderClothesForm(request.POST)
         if inorderclothes_form.is_valid():
             clothes = inorderclothes_form.cleaned_data['clothes']
             amount = inorderclothes_form.cleaned_data['amount']
-            with transaction.atomic():  # 数据库 事务
+            with transaction.atomic():
                 new_inorderclothes = InorderClothes.objects.create(clothes=clothes,
                                                                    inorder_id=inorder_id,
                                                                    amount=amount)
-                # 入库增加库存
+
                 clothes.stock += amount
                 clothes.save()
 
             context = {
                 'id': new_inorderclothes.id
             }
-            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')
             return redirect(reverse('inorder:detail', args={inorder_id}))
 
         else:
@@ -175,7 +175,7 @@ def addmore(request, inorder_id):
                 'inorderclothes_form': inorderclothes_form,
                 'inorder_id': inorder_id
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'inorder/addmore.html', context)
     else:
         inorderclothes_form = InorderClothesForm()
@@ -186,7 +186,7 @@ def addmore(request, inorder_id):
         return render(request, 'inorder/addmore.html', context)
 
 
-# 修改入库单货物
+
 def editmore(request, inorder_id, inorderclothes_id):
     inorderclothes = InorderClothes.objects.get(id=inorderclothes_id)
     if request.method == "POST":
@@ -204,7 +204,7 @@ def editmore(request, inorder_id, inorderclothes_id):
             context = {
                 'inorderclothes_id': inorderclothes_id
             }
-            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')
             return redirect(reverse('inorder:detail', args={inorder_id}))
         else:
             context = {
@@ -212,7 +212,7 @@ def editmore(request, inorder_id, inorderclothes_id):
                 'inorder_id': inorder_id,
                 'inorderclothes_id': inorderclothes_id
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'inorder/editmore.html', context)
     else:
         editmore_form = EditmoreForm({'clothes': inorderclothes.clothes,
@@ -225,12 +225,12 @@ def editmore(request, inorder_id, inorderclothes_id):
         return render(request, 'inorder/editmore.html', context)
 
 
-# 删除入库单货物
+
 def deletemore(request, inorder_id, inorderclothes_id):
     inorderclothes = InorderClothes.objects.get(id=inorderclothes_id)
     with transaction.atomic():
         inorderclothes.delete()
         inorderclothes.clothes.stock -= inorderclothes.amount
         inorderclothes.clothes.save()
-    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')
     return redirect(reverse('inorder:detail', args={inorder_id}))

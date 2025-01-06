@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # 添加 Django REST Framework 支持
-    'customer',        # 添加你新创建的 customer 应用
+    'rest_framework',
+    'customer',
 
 ]
 
@@ -116,9 +116,9 @@ STATIC_URL = 'static/'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framework 配置
+# REST Framework
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # 分页类
-    'PAGE_SIZE': 5,  # 每页显示 5 条数据
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
 }
 MIDDLEWARE += ['customer.middleware.APILoggerMiddleware']

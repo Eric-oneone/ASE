@@ -24,31 +24,31 @@ def login(request):
             password = login_form.cleaned_data['password']
             try:
                 user = models.User.objects.get(username=username)
-                if user.password == hash_code(password):  # 哈希值和数据库内的值进行比对
+                if user.password == hash_code(password):
                     request.session['is_login'] = True
                     request.session['user_id'] = user.id
                     request.session['user_name'] = user.name
                     request.session['user_role'] = user.role
                     return redirect(reverse('index'))
                 else:
-                    messages.add_message(request, messages.WARNING, 'Incorrect password')#密码不正确
+                    messages.add_message(request, messages.WARNING, 'Incorrect password')
             except User.DoesNotExist:
-                messages.add_message(request, messages.WARNING, 'User does not exist')#用户不存在
+                messages.add_message(request, messages.WARNING, 'User does not exist')
         return render(request, 'login.html', locals())
     login_form = LoginForm()
     return render(request, 'login.html', locals())
 
 
-# 退出登录
+
 def logout(request):
     if not request.session.get('is_login', None):
-        # 如果本来就未登录，也就没有注销一说
+
         return redirect(reverse(reverse('index')))
     request.session.flush()
     return redirect(reverse('index'))
 
 
-# 修改密码
+
 def changepwd(request):
     if not request.session.get('is_login', None):
         return redirect(reverse('index'))
@@ -66,25 +66,25 @@ def changepwd(request):
                 if password1 == password2:
                     user.password = hash_code(password1)
                     user.save()
-                    messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+                    messages.add_message(request, messages.SUCCESS, 'Modified successfully')
                     return redirect(reverse('index'))
                 else:
                     context = {
                         'changepwd_form': changepwd_form
                     }
-                    messages.add_message(request, messages.WARNING, 'The two passwords are different')#两次输入的密码不一致
+                    messages.add_message(request, messages.WARNING, 'The two passwords are different')
                     return render(request, 'changepwd.html', context)
             else:
                 context = {
                     'changepwd_form': changepwd_form
                 }
-                messages.add_message(request, messages.WARNING, 'The old password is incorrect')#原密码不正确
+                messages.add_message(request, messages.WARNING, 'The old password is incorrect')
                 return render(request, 'changepwd.html', context)
         else:
             context = {
                 'changepwd_form': changepwd_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'changepwd.html', context)
     else:
         changepwd_form = ChangepwdForm()
@@ -94,17 +94,17 @@ def changepwd(request):
         return render(request, 'changepwd.html', context)
 
 
-# 检测用户名
+
 def checkusername(request, username):
     same_name_user = User.objects.filter(username=username)
     if not same_name_user:
-        return JsonResponse({'ret': 0, 'msg': 'The user name is available'})#用户名可使用
-    return JsonResponse({'ret': 1, 'msg': 'The user name already exists'})#用户名已存在
+        return JsonResponse({'ret': 0, 'msg': 'The user name is available'})
+    return JsonResponse({'ret': 1, 'msg': 'The user name already exists'})
 
 
-# 哈希加密
-def hash_code(s, salt='psf'):  # 加点盐
+
+def hash_code(s, salt='psf'):
     h = hashlib.sha256()
     s += salt
-    h.update(s.encode())  # update方法只接受bytes类型
+    h.update(s.encode())
     return h.hexdigest()

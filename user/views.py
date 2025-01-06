@@ -6,9 +6,9 @@ from common.models import User
 from user.forms import UserForm
 
 
-# 用户列表
+
 def list(request):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
+
     qs = User.objects.values()
     paginator = Paginator(qs, 5)
     page = request.GET.get('page', '1')
@@ -19,7 +19,7 @@ def list(request):
     return render(request, 'user/index.html', context)
 
 
-# 添加用户
+
 def add(request):
     if request.method == "POST":
         user_form = UserForm(request.POST)
@@ -36,13 +36,13 @@ def add(request):
             context = {
                 'id': new_user.id
             }
-            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')
             return redirect(reverse('user:index'))
         else:
             context = {
                 'user_form': user_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'user/add.html', {'user_form': user_form})
     else:
         user_form = UserForm()
@@ -52,7 +52,7 @@ def add(request):
     return render(request, 'user/add.html', context)
 
 
-# 搜索用户
+
 def search(request):
     object = User.objects
     qs = object.values()
@@ -74,11 +74,11 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, 'Query success') #查询成功
+    messages.add_message(request, messages.SUCCESS, 'Query success')
     return render(request, 'user/index.html', context)
 
 
-# 修改用户
+
 def update(request, user_id):
     user = User.objects.get(id=user_id)
 
@@ -106,13 +106,13 @@ def update(request, user_id):
             context = {
                 'user_id': user_id
             }
-            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')
             return redirect(reverse('user:index'))
         else:
             context = {
                 'user_form': user_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'user/edit.html', context)
     else:
         user_form = UserForm({'id': user.id,
@@ -128,17 +128,17 @@ def update(request, user_id):
     return render(request, 'user/edit.html', context)
 
 
-# 删除用户
+
 def delete(request, user_id):
     user = User.objects.get(id=user_id)
     user.delete()
-    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')
     return redirect(reverse('user:index'))
 
 
-# 哈希加密方法，用户加密用户登录密码
-def hash_code(s, salt='psf'):  # 加点盐
+
+def hash_code(s, salt='psf'):
     h = hashlib.sha256()
     s += salt
-    h.update(s.encode())  # update方法只接受bytes类型
+    h.update(s.encode())
     return h.hexdigest()

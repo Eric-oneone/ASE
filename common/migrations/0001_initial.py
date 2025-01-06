@@ -16,19 +16,19 @@ class Migration(migrations.Migration):
             name='Clothes',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=32, verbose_name='Costume name')),#服装名
-                ('sn', models.CharField(max_length=32, unique=True, verbose_name='Garment number')),#服装号
-                ('price', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Price')),#价格
-                ('size', models.CharField(choices=[('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'), ('XXL', 'XXL')], max_length=32, verbose_name='dimension')),#尺寸
-                ('color', models.CharField(max_length=32, verbose_name='colour')),#颜色
-                ('stock', models.PositiveIntegerField(verbose_name='inventory')),#库存
-                ('desc', models.CharField(max_length=200, verbose_name='Description')),#描述
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),#创建时间
-                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),#修改时间
+                ('name', models.CharField(max_length=32, verbose_name='Costume name')),
+                ('sn', models.CharField(max_length=32, unique=True, verbose_name='Garment number')),
+                ('price', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Price')),
+                ('size', models.CharField(choices=[('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'), ('XXL', 'XXL')], max_length=32, verbose_name='dimension')),
+                ('color', models.CharField(max_length=32, verbose_name='colour')),
+                ('stock', models.PositiveIntegerField(verbose_name='inventory')),
+                ('desc', models.CharField(max_length=200, verbose_name='Description')),
+                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),
+                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),
             ],
             options={
-                'verbose_name': 'Clothing information',#服装信息
-                'verbose_name_plural': 'Clothing information',#服装信息
+                'verbose_name': 'Clothing information',
+                'verbose_name_plural': 'Clothing information',
                 'ordering': ['create_time'],
             },
         ),
@@ -36,15 +36,15 @@ class Migration(migrations.Migration):
             name='Customer',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=32, verbose_name='Client name')),#客户名
-                ('phone', models.CharField(max_length=32, verbose_name='telephone')),#电话
-                ('address', models.CharField(max_length=32, verbose_name='address')),#地址
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),#创建时间
-                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),#修改时间
+                ('name', models.CharField(max_length=32, verbose_name='Client name')),
+                ('phone', models.CharField(max_length=32, verbose_name='telephone')),
+                ('address', models.CharField(max_length=32, verbose_name='address')),
+                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),
+                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),
             ],
             options={
-                'verbose_name': 'Customer information',#客户信息
-                'verbose_name_plural': 'Customer information',#客户信息
+                'verbose_name': 'Customer information',
+                'verbose_name_plural': 'Customer information',
                 'ordering': ['create_time'],
             },
         ),
@@ -52,13 +52,13 @@ class Migration(migrations.Migration):
             name='Inorder',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=32, verbose_name='Warehouse entry number')),#入库单号
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),#创建时间
-                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),#修改时间
+                ('code', models.CharField(max_length=32, verbose_name='Warehouse entry number')),
+                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),
+                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),
             ],
             options={
-                'verbose_name': 'Warehouse entry information',#入库单信息
-                'verbose_name_plural': 'Warehouse entry information',#入库单信息
+                'verbose_name': 'Warehouse entry information',
+                'verbose_name_plural': 'Warehouse entry information',
                 'ordering': ['create_time'],
             },
         ),
@@ -67,12 +67,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('amount', models.PositiveIntegerField()),
-                ('clothes', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Clothes', verbose_name='outfit')),#服装
-                ('inorder', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Inorder', verbose_name='Warehouse warrant')),#入库单
+                ('clothes', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Clothes', verbose_name='outfit')),
+                ('inorder', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Inorder', verbose_name='Warehouse warrant')),
             ],
             options={
-                'verbose_name': 'Store entry details',#入库单详情
-                'verbose_name_plural': 'Store entry details',#入库单详情
+                'verbose_name': 'Store entry details',
+                'verbose_name_plural': 'Store entry details',
                 'ordering': ['id'],
             },
         ),
@@ -80,13 +80,13 @@ class Migration(migrations.Migration):
             name='Outorder',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=32, verbose_name='The invoice number')),#出库单号
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),#创建时间
-                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),#修改时间
+                ('code', models.CharField(max_length=32, verbose_name='The invoice number')),
+                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation time')),
+                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification time')),
             ],
             options={
-                'verbose_name': 'Outbound information',#出库单信息
-                'verbose_name_plural': 'Outbound information',#出库单信息
+                'verbose_name': 'Outbound information',
+                'verbose_name_plural': 'Outbound information',
                 'ordering': ['create_time'],
             },
         ),
@@ -94,13 +94,13 @@ class Migration(migrations.Migration):
             name='OutorderClothes',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.PositiveIntegerField(verbose_name='quantity')),#数量
-                ('clothes', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Clothes', verbose_name='outfit')),#服装
-                ('outorder', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Outorder', verbose_name='Outbound order')),#出库单
+                ('amount', models.PositiveIntegerField(verbose_name='quantity')),
+                ('clothes', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Clothes', verbose_name='outfit')),
+                ('outorder', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Outorder', verbose_name='Outbound order')),
             ],
             options={
-                'verbose_name': 'Details of the delivery slip',#出库单详情
-                'verbose_name_plural': 'Details of the delivery slip',#出库单详情
+                'verbose_name': 'Details of the delivery slip',
+                'verbose_name_plural': 'Details of the delivery slip',
                 'ordering': ['id'],
             },
         ),
@@ -108,47 +108,47 @@ class Migration(migrations.Migration):
             name='User',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('username', models.CharField(max_length=32, unique=True, verbose_name='username')),#用户名
-                ('password', models.CharField(max_length=100, verbose_name='cipher')),#密码
-                ('name', models.CharField(max_length=32, verbose_name='name')),#姓名
-                ('role', models.CharField(choices=[('operator', 'operator'), ('Administrator', 'Administrator')], default='操作员', max_length=32, verbose_name='Character')),#
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')),#创建时间
-                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification Time')),#修改时间
+                ('username', models.CharField(max_length=32, unique=True, verbose_name='username')),
+                ('password', models.CharField(max_length=100, verbose_name='cipher')),
+                ('name', models.CharField(max_length=32, verbose_name='name')),
+                ('role', models.CharField(choices=[('operator', 'operator'), ('Administrator', 'Administrator')], default='operator', max_length=32, verbose_name='Character')),
+                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')),
+                ('modify_time', models.DateTimeField(auto_now=True, verbose_name='Modification Time')),
             ],
             options={
-                'verbose_name': 'User information',#用户信息
-                'verbose_name_plural': 'User information',#用户信息
+                'verbose_name': 'User information',
+                'verbose_name_plural': 'User information',
                 'ordering': ['create_time'],
             },
         ),
         migrations.AddField(
             model_name='outorder',
             name='clothes',
-            field=models.ManyToManyField(through='common.OutorderClothes', to='common.Clothes', verbose_name='outfit'),#服装
+            field=models.ManyToManyField(through='common.OutorderClothes', to='common.Clothes', verbose_name='outfit'),
         ),
         migrations.AddField(
             model_name='outorder',
             name='customer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Customer', verbose_name='client'),#客户
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Customer', verbose_name='client'),
         ),
         migrations.AddField(
             model_name='outorder',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.User', verbose_name='user'),#用户
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.User', verbose_name='user'),
         ),
         migrations.AddField(
             model_name='inorder',
             name='clothes',
-            field=models.ManyToManyField(through='common.InorderClothes', to='common.Clothes', verbose_name='outfit'),#服装
+            field=models.ManyToManyField(through='common.InorderClothes', to='common.Clothes', verbose_name='outfit'),
         ),
         migrations.AddField(
             model_name='inorder',
             name='customer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Customer', verbose_name='client'),#客户
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.Customer', verbose_name='client'),
         ),
         migrations.AddField(
             model_name='inorder',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.User', verbose_name='user'),#用户
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='common.User', verbose_name='user'),
         ),
     ]

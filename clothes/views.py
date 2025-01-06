@@ -8,16 +8,16 @@ from clothes.forms import ClothesForm
 from common.models import Clothes
 
 
-# 获取服装列表
+
 def list(request):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
+
     qs = Clothes.objects.all()
     short = []
     for foo in qs:
         if foo.stock < 10:
             short.append(foo.name)
     short_str = '、'.join(short)
-    messages.add_message(request, messages.WARNING, f'{str(short_str)}Insufficient stock') #库存不足
+    messages.add_message(request, messages.WARNING, f'{str(short_str)}Insufficient stock')
     paginator = Paginator(qs, 5)
     page = request.GET.get('page', '1')
     result = paginator.page(page)
@@ -27,7 +27,7 @@ def list(request):
     return render(request, 'clothes/index.html', context)
 
 
-# 添加服装
+
 def add(request):
     if request.method == "POST":
         clothes_form = ClothesForm(request.POST)
@@ -50,13 +50,13 @@ def add(request):
             context = {
                 'id': new_clothes.id,
             }
-            messages.add_message(request, messages.SUCCESS, 'Add successfully')#添加成功
+            messages.add_message(request, messages.SUCCESS, 'Add successfully')
             return redirect('/clothes/')
         else:
             context = {
                 'clothes_form': clothes_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'clothes/add.html', context)
     else:
         clothes_form = ClothesForm()
@@ -66,7 +66,7 @@ def add(request):
         return render(request, 'clothes/add.html', context)
 
 
-# 搜索服装
+
 def search(request):
     object = Clothes.objects
     qs = object.values()
@@ -97,11 +97,11 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, 'Query success')#查询成功
+    messages.add_message(request, messages.SUCCESS, 'Query success')
     return render(request, 'clothes/index.html', context)
 
 
-# 修改服装
+
 def update(request, clothes_id):
     clothes = Clothes.objects.get(id=clothes_id)
     if request.method == "POST":
@@ -132,13 +132,13 @@ def update(request, clothes_id):
             context = {
                 'clothes_id': clothes_id
             }
-            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')
             return redirect(reverse('clothes:index'))
         else:
             context = {
                 'clothes_form': clothes_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'clothes/edit.html', context)
     else:
         clothes_form = ClothesForm({'id': clothes.id,
@@ -156,15 +156,15 @@ def update(request, clothes_id):
         return render(request, 'clothes/edit.html', context)
 
 
-# 删除服装
+
 def delete(request, clothes_id):
     clothes = Clothes.objects.get(id=clothes_id)
     clothes.delete()
-    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')
     return redirect(reverse('clothes:index'))
 
 
-# 获取库存
+
 def checkstock(request, clothes_id):
     clothes = Clothes.objects.get(id=clothes_id)
     return JsonResponse({'stock': clothes.stock})

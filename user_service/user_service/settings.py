@@ -136,6 +136,6 @@ REST_FRAMEWORK = {
 
 # JWT Token lifetime configuration
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # 访问令牌有效期 30 分钟
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # 刷新令牌有效期 1 天
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }

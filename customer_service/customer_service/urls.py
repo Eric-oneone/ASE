@@ -19,11 +19,11 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from customer.views import CustomerViewSet
 
-# 定义 REST API 路由
+
 router = DefaultRouter()
 router.register(r'customers', CustomerViewSet, basename='customer')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),    # Django 后台管理路由
-    path('api/', include(router.urls)), # 添加 REST API 路由
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
 ]

@@ -8,7 +8,7 @@ def main():
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
-            "项目环境配置异常，请检查！"
+            "The project environment configuration is abnormal, please check!"
         ) from exc
     execute_from_command_line(sys.argv)
 

@@ -6,9 +6,9 @@ from common.models import Customer
 from customer.forms import CustomerForm
 
 
-# 客户列表
+
 def list(request):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
+
     qs = Customer.objects.all()
     paginator = Paginator(qs, 5)
     page = request.GET.get('page', '1')
@@ -33,13 +33,13 @@ def add(request):
             context = {
                 'id': new_customer.id
             }
-            messages.add_message(request, messages.WARNING, 'Add successfully')#添加成功
+            messages.add_message(request, messages.WARNING, 'Add successfully')
             return redirect(reverse('customer:index'))
         else:
             context = {
                 'customer_form': customer_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'customer/add.html', context)
     else:
         customer_form = CustomerForm()
@@ -49,7 +49,7 @@ def add(request):
         return render(request, 'customer/add.html', context)
 
 
-# 搜索客户
+
 def search(request):
     object = Customer.objects
     qs = object.values()
@@ -71,11 +71,11 @@ def search(request):
     context = {
         'result': result
     }
-    messages.add_message(request, messages.SUCCESS, 'Query success')#查询成功
+    messages.add_message(request, messages.SUCCESS, 'Query success')
     return render(request, 'customer/index.html', context)
 
 
-# 修改客户
+
 def update(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     if request.method == "POST":
@@ -94,13 +94,13 @@ def update(request, customer_id):
             context = {
                 'customer_id': customer_id
             }
-            messages.add_message(request, messages.SUCCESS, 'Modified successfully')#修改成功
+            messages.add_message(request, messages.SUCCESS, 'Modified successfully')
             return redirect(reverse('customer:index'))
         else:
             context = {
                 'customer_form': customer_form
             }
-            messages.add_message(request, messages.WARNING, 'Please check the contents')#请检查填写的内容
+            messages.add_message(request, messages.WARNING, 'Please check the contents')
             return render(request, 'customer/edit.html', context)
     else:
         customer_form = CustomerForm({'id': customer.id,
@@ -115,9 +115,9 @@ def update(request, customer_id):
         return render(request, 'customer/edit.html', context)
 
 
-# 删除客户
+
 def delete(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     customer.delete()
-    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')#删除成功
+    messages.add_message(request, messages.SUCCESS, 'Successfully deleted')
     return redirect(reverse('customer:index'))

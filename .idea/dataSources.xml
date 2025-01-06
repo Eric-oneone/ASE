@@ -13,5 +13,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\郭\Desktop\Mys(1)\Mys\StoreManageSystem\outorder_service\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="db [3]" uuid="75daafdf-9de1-48a1-92d3-d61d5c1b7873">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\郭\Desktop\Mys(1)\Mys\StoreManageSystem\customer_service\db.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>
