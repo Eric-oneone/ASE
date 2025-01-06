@@ -1,17 +1,17 @@
 /*
- Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
- Source Server         : mysq
+ Source Server         : Mysql80
  Source Server Type    : MySQL
- Source Server Version : 50736
+ Source Server Version : 80040
  Source Host           : localhost:3306
  Source Schema         : db_store
 
  Target Server Type    : MySQL
- Target Server Version : 50736
+ Target Server Version : 80040
  File Encoding         : 65001
 
- Date: 27/11/2024 20:53:43
+ Date: 06/01/2025 23:00:40
 */
 
 SET NAMES utf8mb4;
@@ -22,33 +22,41 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE `auth_group`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of auth_group
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for auth_group_permissions
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE `auth_group_permissions`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `group_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `permission_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `group_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `permission_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of auth_group_permissions
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for auth_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE `auth_permission`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `content_type_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `codename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content_type_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `codename` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 141 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 141 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_permission
@@ -127,27 +135,27 @@ INSERT INTO `auth_permission` VALUES (71, '5', 'delete_contenttype', 'Can delete
 INSERT INTO `auth_permission` VALUES (72, '6', 'add_session', 'Can add session');
 INSERT INTO `auth_permission` VALUES (73, '6', 'change_session', 'Can change session');
 INSERT INTO `auth_permission` VALUES (74, '6', 'delete_session', 'Can delete session');
-INSERT INTO `auth_permission` VALUES (75, '8', 'add_clothes', 'Can add 服装信息');
-INSERT INTO `auth_permission` VALUES (76, '8', 'change_clothes', 'Can change 服装信息');
-INSERT INTO `auth_permission` VALUES (77, '8', 'delete_clothes', 'Can delete 服装信息');
-INSERT INTO `auth_permission` VALUES (78, '7', 'add_customer', 'Can add 客户信息');
-INSERT INTO `auth_permission` VALUES (79, '7', 'change_customer', 'Can change 客户信息');
-INSERT INTO `auth_permission` VALUES (80, '7', 'delete_customer', 'Can delete 客户信息');
-INSERT INTO `auth_permission` VALUES (81, '11', 'add_inorder', 'Can add 入库单信息');
-INSERT INTO `auth_permission` VALUES (82, '11', 'change_inorder', 'Can change 入库单信息');
-INSERT INTO `auth_permission` VALUES (83, '11', 'delete_inorder', 'Can delete 入库单信息');
-INSERT INTO `auth_permission` VALUES (84, '14', 'add_inorderclothes', 'Can add 入库单详情');
-INSERT INTO `auth_permission` VALUES (85, '14', 'change_inorderclothes', 'Can change 入库单详情');
-INSERT INTO `auth_permission` VALUES (86, '14', 'delete_inorderclothes', 'Can delete 入库单详情');
-INSERT INTO `auth_permission` VALUES (87, '12', 'add_outorder', 'Can add 出库单信息');
-INSERT INTO `auth_permission` VALUES (88, '12', 'change_outorder', 'Can change 出库单信息');
-INSERT INTO `auth_permission` VALUES (89, '12', 'delete_outorder', 'Can delete 出库单信息');
-INSERT INTO `auth_permission` VALUES (90, '13', 'add_outorderclothes', 'Can add 出库单详情');
-INSERT INTO `auth_permission` VALUES (91, '13', 'change_outorderclothes', 'Can change 出库单详情');
-INSERT INTO `auth_permission` VALUES (92, '13', 'delete_outorderclothes', 'Can delete 出库单详情');
-INSERT INTO `auth_permission` VALUES (93, '9', 'add_user', 'Can add 用户信息');
-INSERT INTO `auth_permission` VALUES (94, '9', 'change_user', 'Can change 用户信息');
-INSERT INTO `auth_permission` VALUES (95, '9', 'delete_user', 'Can delete 用户信息');
+INSERT INTO `auth_permission` VALUES (75, '8', 'add_clothes', 'Can add Clothing information');
+INSERT INTO `auth_permission` VALUES (76, '8', 'change_clothes', 'Can change Clothing information');
+INSERT INTO `auth_permission` VALUES (77, '8', 'delete_clothes', 'Can delete Clothing information');
+INSERT INTO `auth_permission` VALUES (78, '7', 'add_customer', 'Can add Customer information');
+INSERT INTO `auth_permission` VALUES (79, '7', 'change_customer', 'Can change Customer information');
+INSERT INTO `auth_permission` VALUES (80, '7', 'delete_customer', 'Can delete Customer information');
+INSERT INTO `auth_permission` VALUES (81, '11', 'add_inorder', 'Can add Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (82, '11', 'change_inorder', 'Can change Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (83, '11', 'delete_inorder', 'Can delete Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (84, '14', 'add_inorderclothes', 'Can add Store entry details');
+INSERT INTO `auth_permission` VALUES (85, '14', 'change_inorderclothes', 'Can change Store entry details');
+INSERT INTO `auth_permission` VALUES (86, '14', 'delete_inorderclothes', 'Can delete Store entry details');
+INSERT INTO `auth_permission` VALUES (87, '12', 'add_outorder', 'Can add Outbound information');
+INSERT INTO `auth_permission` VALUES (88, '12', 'change_outorder', 'Can change Outbound information');
+INSERT INTO `auth_permission` VALUES (89, '12', 'delete_outorder', 'Can delete Outbound information');
+INSERT INTO `auth_permission` VALUES (90, '13', 'add_outorderclothes', 'Can add Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (91, '13', 'change_outorderclothes', 'Can change Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (92, '13', 'delete_outorderclothes', 'Can delete Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (93, '9', 'add_user', 'Can add User information');
+INSERT INTO `auth_permission` VALUES (94, '9', 'change_user', 'Can change User information');
+INSERT INTO `auth_permission` VALUES (95, '9', 'delete_user', 'Can delete User information');
 INSERT INTO `auth_permission` VALUES (96, '10', 'add_captchastore', 'Can add captcha store');
 INSERT INTO `auth_permission` VALUES (97, '10', 'change_captchastore', 'Can change captcha store');
 INSERT INTO `auth_permission` VALUES (98, '10', 'delete_captchastore', 'Can delete captcha store');
@@ -169,27 +177,27 @@ INSERT INTO `auth_permission` VALUES (113, '5', 'delete_contenttype', 'Can delet
 INSERT INTO `auth_permission` VALUES (114, '6', 'add_session', 'Can add session');
 INSERT INTO `auth_permission` VALUES (115, '6', 'change_session', 'Can change session');
 INSERT INTO `auth_permission` VALUES (116, '6', 'delete_session', 'Can delete session');
-INSERT INTO `auth_permission` VALUES (117, '8', 'add_clothes', 'Can add 服装信息');
-INSERT INTO `auth_permission` VALUES (118, '8', 'change_clothes', 'Can change 服装信息');
-INSERT INTO `auth_permission` VALUES (119, '8', 'delete_clothes', 'Can delete 服装信息');
-INSERT INTO `auth_permission` VALUES (120, '7', 'add_customer', 'Can add 客户信息');
-INSERT INTO `auth_permission` VALUES (121, '7', 'change_customer', 'Can change 客户信息');
-INSERT INTO `auth_permission` VALUES (122, '7', 'delete_customer', 'Can delete 客户信息');
-INSERT INTO `auth_permission` VALUES (123, '11', 'add_inorder', 'Can add 入库单信息');
-INSERT INTO `auth_permission` VALUES (124, '11', 'change_inorder', 'Can change 入库单信息');
-INSERT INTO `auth_permission` VALUES (125, '11', 'delete_inorder', 'Can delete 入库单信息');
-INSERT INTO `auth_permission` VALUES (126, '14', 'add_inorderclothes', 'Can add 入库单详情');
-INSERT INTO `auth_permission` VALUES (127, '14', 'change_inorderclothes', 'Can change 入库单详情');
-INSERT INTO `auth_permission` VALUES (128, '14', 'delete_inorderclothes', 'Can delete 入库单详情');
-INSERT INTO `auth_permission` VALUES (129, '12', 'add_outorder', 'Can add 出库单信息');
-INSERT INTO `auth_permission` VALUES (130, '12', 'change_outorder', 'Can change 出库单信息');
-INSERT INTO `auth_permission` VALUES (131, '12', 'delete_outorder', 'Can delete 出库单信息');
-INSERT INTO `auth_permission` VALUES (132, '13', 'add_outorderclothes', 'Can add 出库单详情');
-INSERT INTO `auth_permission` VALUES (133, '13', 'change_outorderclothes', 'Can change 出库单详情');
-INSERT INTO `auth_permission` VALUES (134, '13', 'delete_outorderclothes', 'Can delete 出库单详情');
-INSERT INTO `auth_permission` VALUES (135, '9', 'add_user', 'Can add 用户信息');
-INSERT INTO `auth_permission` VALUES (136, '9', 'change_user', 'Can change 用户信息');
-INSERT INTO `auth_permission` VALUES (137, '9', 'delete_user', 'Can delete 用户信息');
+INSERT INTO `auth_permission` VALUES (117, '8', 'add_clothes', 'Can add Clothing information');
+INSERT INTO `auth_permission` VALUES (118, '8', 'change_clothes', 'Can change Clothing information');
+INSERT INTO `auth_permission` VALUES (119, '8', 'delete_clothes', 'Can delete Clothing information');
+INSERT INTO `auth_permission` VALUES (120, '7', 'add_customer', 'Can add Customer information');
+INSERT INTO `auth_permission` VALUES (121, '7', 'change_customer', 'Can change Customer information');
+INSERT INTO `auth_permission` VALUES (122, '7', 'delete_customer', 'Can delete Customer information');
+INSERT INTO `auth_permission` VALUES (123, '11', 'add_inorder', 'Can add Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (124, '11', 'change_inorder', 'Can change Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (125, '11', 'delete_inorder', 'Can delete Warehouse entry information');
+INSERT INTO `auth_permission` VALUES (126, '14', 'add_inorderclothes', 'Can add Store entry details');
+INSERT INTO `auth_permission` VALUES (127, '14', 'change_inorderclothes', 'Can change Store entry details');
+INSERT INTO `auth_permission` VALUES (128, '14', 'delete_inorderclothes', 'Can delete Store entry details');
+INSERT INTO `auth_permission` VALUES (129, '12', 'add_outorder', 'Can add Outbound information');
+INSERT INTO `auth_permission` VALUES (130, '12', 'change_outorder', 'Can change Outbound information');
+INSERT INTO `auth_permission` VALUES (131, '12', 'delete_outorder', 'Can delete Outbound information');
+INSERT INTO `auth_permission` VALUES (132, '13', 'add_outorderclothes', 'Can add Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (133, '13', 'change_outorderclothes', 'Can change Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (134, '13', 'delete_outorderclothes', 'Can delete Details of the delivery slip');
+INSERT INTO `auth_permission` VALUES (135, '9', 'add_user', 'Can add User information');
+INSERT INTO `auth_permission` VALUES (136, '9', 'change_user', 'Can change User information');
+INSERT INTO `auth_permission` VALUES (137, '9', 'delete_user', 'Can delete User information');
 INSERT INTO `auth_permission` VALUES (138, '10', 'add_captchastore', 'Can add captcha store');
 INSERT INTO `auth_permission` VALUES (139, '10', 'change_captchastore', 'Can change captcha store');
 INSERT INTO `auth_permission` VALUES (140, '10', 'delete_captchastore', 'Can delete captcha store');
@@ -199,18 +207,18 @@ INSERT INTO `auth_permission` VALUES (140, '10', 'delete_captchastore', 'Can del
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user`  (
-  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `last_login` datetime(0) NULL DEFAULT NULL,
-  `is_superuser` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `first_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `is_staff` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `is_active` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `date_joined` datetime(0) NULL DEFAULT NULL,
-  `last_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `last_login` datetime NULL DEFAULT NULL,
+  `is_superuser` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `first_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `is_staff` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `is_active` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `date_joined` datetime NULL DEFAULT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_user
@@ -222,219 +230,244 @@ INSERT INTO `auth_user` VALUES ('1', 'pbkdf2_sha256$390000$mO1MG0zxCv4ftFRxTz8al
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `group_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `group_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of auth_user_groups
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for auth_user_user_permissions
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE `auth_user_user_permissions`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `permission_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `permission_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of auth_user_user_permissions
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for captcha_captchastore
 -- ----------------------------
 DROP TABLE IF EXISTS `captcha_captchastore`;
 CREATE TABLE `captcha_captchastore`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `challenge` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `response` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `hashkey` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `expiration` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `challenge` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `response` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `hashkey` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `expiration` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 230 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 321 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of captcha_captchastore
 -- ----------------------------
-INSERT INTO `captcha_captchastore` VALUES (228, 'ICEA', 'icea', '52d300a112b2ec61d3e21791c983107ba115d720', '2024-11-27 20:53:30.281416');
-INSERT INTO `captcha_captchastore` VALUES (229, 'UNFK', 'unfk', 'bb86a5c3dd93a17dea0d92492d1a79d4bfd55a74', '2024-11-27 20:53:35.565325');
+INSERT INTO `captcha_captchastore` VALUES (318, 'TDNI', 'tdni', '588db9f043f32851479e7a008f4d64605d71fcc0', '2025-01-06 21:46:51.529636');
+INSERT INTO `captcha_captchastore` VALUES (320, 'YRGY', 'yrgy', '02c9e40b2df2c5024ce9d15d39acd5b4bb8bd16b', '2025-01-06 22:49:08.529546');
 
 -- ----------------------------
 -- Table structure for common_clothes
 -- ----------------------------
 DROP TABLE IF EXISTS `common_clothes`;
 CREATE TABLE `common_clothes`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `sn` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `price` int(255) NULL DEFAULT NULL,
-  `size` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  `stock` int(255) NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sn` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `price` int NULL DEFAULT NULL,
+  `size` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `color` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `desc` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `modify_time` datetime NULL DEFAULT NULL,
+  `stock` int NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of common_clothes
 -- ----------------------------
-INSERT INTO `common_clothes` VALUES (1, 'A-12', 200, 'M', '黑', '男士卫衣', '2024-11-27 21:45:38', '2024-11-27 16:40:58', 200, '男士卫衣');
-INSERT INTO `common_clothes` VALUES (2, 'C-15', 50, 'L', '白', '女士T恤', '2024-11-27 21:45:38', '2024-11-27 16:41:04', 199, '女士T恤');
-INSERT INTO `common_clothes` VALUES (3, 'F-33', 100, 'XL', '白', '保暖毛衣', '2024-11-27 21:45:38', '2024-11-27 20:24:04', 2, '保暖毛衣');
-INSERT INTO `common_clothes` VALUES (4, 'X-33', 500, 'L', '黑', '西服、晚礼服', '2024-11-27 22:26:21', '2024-11-27 08:29:26', 200, '西服、晚礼服');
-INSERT INTO `common_clothes` VALUES (5, 'K-323', 120, 'L', '黑', '2024新款休闲裤', '2024-11-27 21:56:09', '2024-11-27 20:23:54', 1, '2024新款休闲裤');
-INSERT INTO `common_clothes` VALUES (6, 'C-16', 200, 'M', '蓝', '保安服', '2024-11-27 08:31:56', '2024-11-27 20:23:45', 1, '保安服');
+INSERT INTO `common_clothes` VALUES (1, 'A-12', 200, 'M', 'black', 'Men\'s hoodie', '2024-11-27 21:45:38', '2024-12-26 18:03:36', 159, 'Men\'s hoodie');
+INSERT INTO `common_clothes` VALUES (2, 'C-15', 50, 'L', 'white', 'Women\'s T-shirt', '2024-11-27 21:45:38', '2024-12-26 18:03:10', 57, 'Women\'s T-shirt');
+INSERT INTO `common_clothes` VALUES (3, 'F-33', 100, 'XL', 'white', 'Warm sweater', '2024-11-27 21:45:38', '2024-12-23 23:17:55', -65, 'Warm sweater');
+INSERT INTO `common_clothes` VALUES (4, 'X-33', 500, 'L', 'black', 'Suit, evening dress', '2024-11-27 22:26:21', '2024-12-23 23:25:12', 144, 'Suit, evening dress');
+INSERT INTO `common_clothes` VALUES (5, 'K-323', 120, 'L', 'black', '2024 New slacks', '2024-11-27 21:56:09', '2024-12-23 23:18:24', 24, '2024 New slacks');
+INSERT INTO `common_clothes` VALUES (6, 'C-16', 200, 'M', 'blue', 'Security uniform', '2024-11-27 08:31:56', '2024-12-23 23:23:09', 11, 'Security uniform');
+INSERT INTO `common_clothes` VALUES (7, 'L', 45, 'S', 'blck', 'Baby clothing', '2024-12-26 19:15:50', '2024-12-26 19:15:50', 50, 'Baby clothing');
+INSERT INTO `common_clothes` VALUES (8, 'M', 78, 'XL', 'yellow', 'Cotton-padded clothes', '2024-12-26 19:18:32', '2024-12-26 19:18:32', 7, 'Cotton-padded clothes');
 
 -- ----------------------------
 -- Table structure for common_customer
 -- ----------------------------
 DROP TABLE IF EXISTS `common_customer`;
 CREATE TABLE `common_customer`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `modify_time` datetime NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of common_customer
 -- ----------------------------
-INSERT INTO `common_customer` VALUES (1, '高启强', '京海市旧厂街', '2024-11-27 21:45:38', '2024-11-27 15:23:53', '16666666666');
-INSERT INTO `common_customer` VALUES (2, '赵立春', '汉东省', '2024-11-27 21:45:38', '2024-11-27 10:00:13', '17777777777');
-INSERT INTO `common_customer` VALUES (3, '祁同伟', '汉东省山水集团', '2024-11-27 23:29:35', '2024-11-27 08:12:59', '18888888888');
+INSERT INTO `common_customer` VALUES (1, 'Gao Qiqiang', 'Old factory Street, Beijing City', '2024-11-27 21:45:38', '2024-12-23 23:02:46', '16666666666');
+INSERT INTO `common_customer` VALUES (2, 'Zhao Lichun', 'Handong', '2024-11-27 21:45:38', '2024-12-23 23:03:31', '17777777777');
+INSERT INTO `common_customer` VALUES (3, 'Qi Tongwei', 'Handong province landscape Group', '2024-11-27 23:29:35', '2024-12-23 23:03:58', '18888888888');
+INSERT INTO `common_customer` VALUES (7, 'jack', 'Kim Boon Tai MRT Station, Singap', '2024-12-26 19:12:54', '2024-12-26 19:12:54', '18879033873');
 
 -- ----------------------------
 -- Table structure for common_inorder
 -- ----------------------------
 DROP TABLE IF EXISTS `common_inorder`;
 CREATE TABLE `common_inorder`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `customer_id` int(255) NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `customer_id` int NULL DEFAULT NULL,
+  `modify_time` datetime NULL DEFAULT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 36 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of common_inorder
 -- ----------------------------
-INSERT INTO `common_inorder` VALUES (25, 'IN2019110409051858861', '2024-11-27 09:05:18', 3, '2024-11-27 09:05:18', '7');
-INSERT INTO `common_inorder` VALUES (26, 'IN2019110409252379817', '2024-11-27 09:25:23', 5, '2024-11-27 08:13:21', '7');
-INSERT INTO `common_inorder` VALUES (28, 'IN2019110608281062773', '2024-11-27 08:28:11', 5, '2024-11-27 08:28:11', '7');
+INSERT INTO `common_inorder` VALUES (32, 'IN2024121711592699663', '2024-12-17 11:59:27', 2, '2024-12-17 11:59:32', '2');
+INSERT INTO `common_inorder` VALUES (30, 'IN2024121101531596728', '2024-12-11 01:53:16', 2, '2024-12-11 01:53:16', '1');
+INSERT INTO `common_inorder` VALUES (31, 'IN2024121113025647887', '2024-12-11 13:02:57', 1, '2024-12-11 13:02:57', '16');
+INSERT INTO `common_inorder` VALUES (29, 'IN2024121101522791451', '2024-12-11 01:52:27', 1, '2024-12-11 01:52:33', '1');
+INSERT INTO `common_inorder` VALUES (33, 'IN2024122323235495010', '2024-12-23 23:23:55', 3, '2024-12-23 23:23:55', '16');
+INSERT INTO `common_inorder` VALUES (34, 'IN2024122618030495914', '2024-12-26 18:03:05', 2, '2024-12-26 18:03:05', '16');
+INSERT INTO `common_inorder` VALUES (35, 'IN2024122618032954962', '2024-12-26 18:03:29', 1, '2024-12-26 18:03:29', '16');
 
 -- ----------------------------
 -- Table structure for common_inorderclothes
 -- ----------------------------
 DROP TABLE IF EXISTS `common_inorderclothes`;
 CREATE TABLE `common_inorderclothes`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `clothes_id` int(255) NULL DEFAULT NULL,
-  `amount` int(255) NULL DEFAULT NULL,
-  `inorder_id` int(255) NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `clothes_id` int NULL DEFAULT NULL,
+  `amount` int NULL DEFAULT NULL,
+  `inorder_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 26 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = FIXED;
 
 -- ----------------------------
 -- Records of common_inorderclothes
 -- ----------------------------
-INSERT INTO `common_inorderclothes` VALUES (10, 1, 10, 25);
-INSERT INTO `common_inorderclothes` VALUES (11, 2, 100, 26);
-INSERT INTO `common_inorderclothes` VALUES (13, 3, 100, 28);
-INSERT INTO `common_inorderclothes` VALUES (14, 4, 100, 25);
+INSERT INTO `common_inorderclothes` VALUES (25, 1, 2, 35);
+INSERT INTO `common_inorderclothes` VALUES (16, 3, 21, 30);
+INSERT INTO `common_inorderclothes` VALUES (20, 5, 23, 31);
+INSERT INTO `common_inorderclothes` VALUES (24, 2, 2, 34);
+INSERT INTO `common_inorderclothes` VALUES (23, 4, 21, 33);
+INSERT INTO `common_inorderclothes` VALUES (22, 4, 23, 29);
+INSERT INTO `common_inorderclothes` VALUES (21, 1, 4, 29);
 
 -- ----------------------------
 -- Table structure for common_outorder
 -- ----------------------------
 DROP TABLE IF EXISTS `common_outorder`;
 CREATE TABLE `common_outorder`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `customer_id` int(255) NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  `user_id` int(255) NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `customer_id` int NULL DEFAULT NULL,
+  `modify_time` datetime NULL DEFAULT NULL,
+  `user_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 25 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of common_outorder
 -- ----------------------------
-INSERT INTO `common_outorder` VALUES (18, 'IN2019110409291635886', '2024-11-27 09:29:17', 5, '2024-11-27 08:13:27', 7);
-INSERT INTO `common_outorder` VALUES (19, 'IN2019110608322145923', '2024-11-27 08:32:21', 5, '2024-11-27 08:32:21', 7);
-INSERT INTO `common_outorder` VALUES (20, 'IN2024112521185275180', '2024-11-27 21:18:52', 5, '2024-11-27 21:19:25', 14);
+INSERT INTO `common_outorder` VALUES (22, 'IN2024121113034663951', '2024-12-11 13:03:47', 2, '2024-12-11 13:03:47', 16);
+INSERT INTO `common_outorder` VALUES (23, 'IN2024121113041556717', '2024-12-11 13:04:16', 3, '2024-12-11 13:04:16', 16);
+INSERT INTO `common_outorder` VALUES (21, 'IN2024121101443323931', '2024-12-11 01:44:34', 1, '2024-12-11 01:44:34', 1);
+INSERT INTO `common_outorder` VALUES (24, 'IN2024-12-26 18:02:2214079', '2024-12-26 18:02:23', 2, '2024-12-26 18:02:23', 16);
 
 -- ----------------------------
 -- Table structure for common_outorderclothes
 -- ----------------------------
 DROP TABLE IF EXISTS `common_outorderclothes`;
 CREATE TABLE `common_outorderclothes`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `clothes_id` int(255) NULL DEFAULT NULL,
-  `amount` int(255) NULL DEFAULT NULL,
-  `outorder_id` int(255) NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `clothes_id` int NULL DEFAULT NULL,
+  `amount` int NULL DEFAULT NULL,
+  `outorder_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 26 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = FIXED;
 
 -- ----------------------------
 -- Records of common_outorderclothes
 -- ----------------------------
-INSERT INTO `common_outorderclothes` VALUES (18, 2, 1, 18);
-INSERT INTO `common_outorderclothes` VALUES (16, 6, 10, 19);
-INSERT INTO `common_outorderclothes` VALUES (19, 3, 12, 18);
+INSERT INTO `common_outorderclothes` VALUES (23, 2, 45, 23);
+INSERT INTO `common_outorderclothes` VALUES (22, 1, 34, 22);
+INSERT INTO `common_outorderclothes` VALUES (24, 1, 2, 21);
+INSERT INTO `common_outorderclothes` VALUES (25, 1, 1, 24);
 
 -- ----------------------------
 -- Table structure for common_user
 -- ----------------------------
 DROP TABLE IF EXISTS `common_user`;
 CREATE TABLE `common_user`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `modify_time` datetime NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 17 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of common_user
 -- ----------------------------
-INSERT INTO `common_user` VALUES (2, 'test', 'test', '操作员', '2024-11-27 20:45:23', '2024-11-27 20:45:29', 'd94d479f2c371ab210b600a95c40fe7a4bdef0568a7f7bad0b27b727fd648980');
-INSERT INTO `common_user` VALUES (1, 'bhml', 'bhml', '管理员', '2024-11-27 12:35:00', '2024-11-27 12:35:00', 'd94d479f2c371ab210b600a95c40fe7a4bdef0568a7f7bad0b27b727fd648980');
+INSERT INTO `common_user` VALUES (2, 'test', 'test', 'operator', '2024-11-27 20:45:23', '2024-12-23 23:33:29', 'd94d479f2c371ab210b600a95c40fe7a4bdef0568a7f7bad0b27b727fd648980');
+INSERT INTO `common_user` VALUES (1, 'bhml', 'bhml', 'Administrator', '2024-11-27 12:35:00', '2024-12-23 23:37:03', 'd94d479f2c371ab210b600a95c40fe7a4bdef0568a7f7bad0b27b727fd648980');
+INSERT INTO `common_user` VALUES (16, 'eric', 'eric', 'Administrator', '2024-12-11 13:01:42', '2024-12-23 23:33:34', 'd94d479f2c371ab210b600a95c40fe7a4bdef0568a7f7bad0b27b727fd648980');
 
 -- ----------------------------
 -- Table structure for django_admin_log
 -- ----------------------------
 DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE `django_admin_log`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `action_time` datetime(0) NULL DEFAULT NULL,
-  `object_id` int(255) NULL DEFAULT NULL,
-  `object_repr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `change_message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `content_type_id` int(255) NULL DEFAULT NULL,
-  `user_id` int(255) NULL DEFAULT NULL,
-  `action_flag` int(255) NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `action_time` datetime NULL DEFAULT NULL,
+  `object_id` int NULL DEFAULT NULL,
+  `object_repr` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `change_message` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `content_type_id` int NULL DEFAULT NULL,
+  `user_id` int NULL DEFAULT NULL,
+  `action_flag` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of django_admin_log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for django_content_type
 -- ----------------------------
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `app_label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `model` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `model` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 15 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of django_content_type
@@ -459,21 +492,49 @@ INSERT INTO `django_content_type` VALUES (14, 'common', 'inorderclothes');
 -- ----------------------------
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE `django_migrations`  (
-  `id` int(50) NOT NULL AUTO_INCREMENT,
-  `app` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `applied` datetime(0) NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `applied` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 34 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of django_migrations
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for django_session
 -- ----------------------------
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE `django_session`  (
-  `session_key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `session_data` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `expire_date` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `session_key` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `session_data` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `expire_date` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of django_session
+-- ----------------------------
+INSERT INTO `django_session` VALUES ('84o8dtl1l9gtvk6pp5h2peazcahbbgf2', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyhLLzEnNTlayUkjJyc5SgQkX5OSChmFLzpERDIGliYBZTampiaqFUCwB2FBqk:1tL4IT:-rcCynIAssQKblnMFHXl-e8_huDiJkeQJT7gLtJGOKg', '2024-12-11 02:15:21.365038');
+INSERT INTO `django_session` VALUES ('rt5me7z4fj1rggym1n1w8s78gsszroe0', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyhLLzEnNTlayUkjJyc5SgQkX5OSChmFLzpERDIGliYBZTampiaqFUCwB2FBqk:1tL4VH:92N7Vy6R9C4mpFuFLFHmzqUXpU19vIdNeBahP6jSw1E', '2024-12-11 02:28:35.667022');
+INSERT INTO `django_session` VALUES ('47kndz5htmx3jcw02lt7grfarzrmiusg', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIygrLzEnNTlayUSlKLS5SgQkX5OSChmFIzk-SUmFKTNNPkmFJTE1MLpVoAflobKQ:1tLE5U:VBLzynTcOOiqJ1qJw2-K_hLXWql9tuOlh6dCoo3qPbs', '2024-12-11 12:42:36.709519');
+INSERT INTO `django_session` VALUES ('cbnlyw35k6ezjth4izxps5z11yn38us4', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tLEte:SxGgizhDqSzZnWIVvK49wG7qqfA1wBnMMIMt4SFbhSI', '2024-12-11 13:34:26.372664');
+INSERT INTO `django_session` VALUES ('uohsl2vnne79e703tpq7nxmkupbnh1zh', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tLGac:hlsDDAFvb69mbCa2Y8ubvb0zEGvcF-9TCN1zG_K7BAU', '2024-12-11 15:22:54.978425');
+INSERT INTO `django_session` VALUES ('f33tjw0s3o3ahqzxo8w3h37rzpmze3fh', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tLciy:1nFR3M3IBazmhBr_LKpCrRB_q5OxJRUOMctl_WV39qg', '2024-12-12 15:01:00.114540');
+INSERT INTO `django_session` VALUES ('5yjrbqg1xfqfyncb349rt0hluwb09s06', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tMNyt:uZ5BZ0qoOgtH-V4Xn0Nig5-dqmVJFqpdgPHK5xtGrPw', '2024-12-14 17:28:35.065063');
+INSERT INTO `django_session` VALUES ('8r5k8rhulvyf1qh6iit8c7jvxtvt87cw', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIygrLzEnNTlayUSlKLS5SgQkX5OSChmFIzk-SUmFKTNNPkmFJTE1MLpVoAflobKQ:1tNOlh:CSyTeMdaen2ez9LRCvJ9Z_PN0TDMHiboE8De9eEo6WM', '2024-12-17 12:31:09.929163');
+INSERT INTO `django_session` VALUES ('q8lmgef68289xgdeysw9b7q6xhqgupe7', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tO7nI:6731xbmpwChm29axsZE8hpN7Z1DNNT-bbM9HLNVYvTs', '2024-12-19 12:35:48.484865');
+INSERT INTO `django_session` VALUES ('l1x9bmd5gci74m5gvgeyaud9zf9dpqft', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tO9U9:zdm5zNFLP80cpvcsDRvp5AkBBsBAt4xISh2cSS_HQ9E', '2024-12-19 14:24:09.003942');
+INSERT INTO `django_session` VALUES ('0ydqdy9d3w40tsdyr20w6vjmtvoa8ml3', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tPhhN:aWA9u7wsdbck0Gnh46dyCjSexYYYHW29vGC6PF6O0-Y', '2024-12-23 21:08:13.801844');
+INSERT INTO `django_session` VALUES ('nrqtzz3nl0gefvsw055a4ac9z1vp9exp', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tPj8o:AO62W3TpLkuegGIs4C_f1jS1iJEVl9e30FOK899B3fE', '2024-12-23 22:40:38.406968');
+INSERT INTO `django_session` VALUES ('5u20cew1met7z0kbvy3cvgy79rhv3mlp', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgoZhS86REQyBpYmAWU2pqYmqhVAsAi2Ua2g:1tPkSn:KEGJgF747gRy1PsZlgWdUzSH-CKkHIqjTE4MguudY6o', '2024-12-24 00:05:21.994201');
+INSERT INTO `django_session` VALUES ('si88l0yxndqs0s0sl1ob4vvs1v5vwo6t', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tPkTn:3g5ZyicO0Jv9DZxWhxlDaaFVyYyl5b_Gf5XffPP17Cw', '2024-12-24 00:06:23.553803');
+INSERT INTO `django_session` VALUES ('k4uobgs3fvmjfa64svh2hsb14zn6c731', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tPkVo:Sza5A2pwRdlCUsdQxCs4zb_EmQt5Y__DXPIW_igB9WU', '2024-12-24 00:08:28.563314');
+INSERT INTO `django_session` VALUES ('7p3632cmnuxtrzzvw2xkxphly52y66lj', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tQkCn:ICslZwQMpTjyDmWJwO9F76tlnE9eJ4TJAGOV5osH6vY', '2024-12-26 18:00:57.746396');
+INSERT INTO `django_session` VALUES ('ejng2u8u1f2zx9gzil2i24zirrfef8hy', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tQkiS:erzdjez7-cF9tQ5PR5j3lzYIDj1Em7EbppiIXLuSMCg', '2024-12-26 18:33:40.431727');
+INSERT INTO `django_session` VALUES ('lgd2dpdmlm7ouaw8cph3lqbdb6whno4h', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tQlsv:HbOnxT7u9zwuMiY_KLWVmQ_NikfaIffSb2ScYHLzLSo', '2024-12-26 19:48:33.663235');
+INSERT INTO `django_session` VALUES ('pr70oq4noynp95up89723dqx7r5fsvcg', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyhLLzEnNTlayUkjJyc5SgQkX5OSAhx5TczLzM4pKixJL8IqVaAPysGsA:1tUPrT:r1Rfr9RjyCN8RdQCLtltNgf0H9YdCnpYHZiMN2ieX-4', '2025-01-05 21:06:07.482492');
+INSERT INTO `django_session` VALUES ('v2k1whcs9wme80g3j7sphajkt64nck03', '.eJyrVsosjs_JT8_MU7IqKSpN1VEqLU4tis9MUbIyNINy8hJzU5WslFKLMpOVoEJF-TkgIceU3My8zOKSosSS_CKlWgAQ_hr2:1tUnND:hRlFS4r544TrmWlxkzgabKMcvsT5tOnPDoUoDyuL_Gg', '2025-01-06 22:12:27.340355');
 
 SET FOREIGN_KEY_CHECKS = 1;
